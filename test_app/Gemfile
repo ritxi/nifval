@@ -1,9 +1,0 @@
-source 'http://rubygems.org'
-
-gem 'rails', '3.0.7'
-
-gem 'haml-rails'
-
-gem 'nifval', :git => 'git://github.com/albertbellonch/nifval.git'
-
-gem 'sqlite3'
