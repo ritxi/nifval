@@ -12,7 +12,7 @@ class Test
   end
 end
 
-describe Nifval do
+describe NifValidator do
   def nif_validity nif, ok
     test = Test.new(nif)
     test.valid?.should == ok
