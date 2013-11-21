@@ -1,20 +1,9 @@
 require 'spec_helper'
 
-class Test
-  include ActiveModel::Validations
-
-  validates :testfield, nif: true
-
-  attr_accessor :testfield
-
-  def initialize testfield
-    @testfield = testfield
-  end
-end
-
 describe NifValidator do
   def nif_validity nif, ok
-    test = Test.new(nif)
+    test = Nif.new
+    test.testfield = nif
     test.valid?.should == ok
   end
 
