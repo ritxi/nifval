@@ -32,8 +32,6 @@ module Nifval
       end
 
       def setup
-        raise MissingNifException if nif.nil?
-
         # Add zeros to the left if applyable, and accept lowercase
         @nif = nif.rjust(9,'0')
         nif.upcase!
