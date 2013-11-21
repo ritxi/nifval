@@ -60,7 +60,7 @@ module Nifval
 
       def valid_cif?
         nstr = cif_algorithm_value.to_s
-        (ival(nif[8]) == (64+cif_algorithm_value).chr) || (nif[8] == nstr[nstr.length-1])
+        (cif_last_number == cif_algorithm_value) || (cif_last_number == nstr[nstr.length-1])
       end
 
       def valid_nie?
@@ -83,30 +83,32 @@ module Nifval
 
       def calculate_cif_algorithm_value
         # CIF algorithm
-        sum = ival(nif[2]) + ival(nif[4]) + ival(nif[6])
+        sum = [nif[2], nif[4], nif[6]].map {|v| integer_value(v) }.sum
         [1,3,5,7].each do |i|
-          t = (2*(ival(nif[i]))).to_s
-          t1 = ival(t[0])
-          t2 = t[1].nil? ? 0 : ival(t[1])
+          t = (2*integer_value(nif[i])).to_s
+          t1 = integer_value(t[0])
+          t2 = t[1].nil? ? 0 : integer_value(t[1])
           sum += t1+t2
         end
-        sumstr = sum.to_s
-
-        (10 - ival(sumstr[sumstr.length-1]))
+        (10 - integer_value(sum.to_s.last))
       end
       private :calculate_cif_algorithm_value
 
-      def ival v
+      def cif_last_number
+        if index = %w(A B C D E F G H I J).index(nif[8].upcase)
+          index + 1
+        end || integer_value(nif[8])
+      end
+
+      def integer_value v
         if Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new("1.9")
           v.to_i
         else
           v-48
         end
       end
-      private :ival
+      private :integer_value
     end
-
-
   end
 end
 

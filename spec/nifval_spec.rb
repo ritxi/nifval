@@ -34,15 +34,22 @@ describe Nifval do
 
   # Correct CIFs
   context "when we check valid CIFs" do
-    it "should return OK" do
+    it "should return OK when ended with number" do
       nif_validity "A12345674", true
+    end
+
+    it "should return OK when ended with character" do
+      nif_validity "R2345678C", true
     end
   end
 
-  # Invalid CIFs
   context "when we check invalid CIFs" do
-    it "should return ERROR" do
-      nif_validity "A2345678C", false
+    it "should return ERROR when ended with number" do
+      nif_validity "A12345675", false
+    end
+
+    it "should return OK when ended with character" do
+      nif_validity "R2345678D", false
     end
   end
 
