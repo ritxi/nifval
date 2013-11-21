@@ -45,19 +45,19 @@ module Nifval
       end
 
       def standard?
-        nif.match(/^[0-9]{8}[A-Z]{1}$/)
+        !!nif.match(/^[0-9]{8}[A-Z]{1}$/)
       end
 
       def special?
-        nif.match(/^[KLM]{1}/)
+        !!nif.match(/^[KLM]{1}/)
       end
 
       def cif?
-        nif.match(/^[ABCDEFGHJNPQRSUVW]{1}/)
+        !!nif.match(/^[ABCDEFGHJNPQRSUVW]{1}/)
       end
 
       def nie?
-        nif.match(/^[XYZ]{1}/)
+        !!nif.match(/^[XYZ]{1}/)
       end
 
       def valid_cif?
