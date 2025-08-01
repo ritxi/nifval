@@ -99,11 +99,7 @@ class NifValidator < ActiveModel::EachValidator
     end
 
     def integer_value v
-      if Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new("1.9")
-        v.to_i
-      else
-        v-48
-      end
+      v.to_i
     end
     private :integer_value
   end
