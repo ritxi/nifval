@@ -21,7 +21,8 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency "rspec", "~> 2.5"
   s.add_development_dependency "fuubar"
-  s.add_development_dependency "rspec-rails"
+  s.add_development_dependency "simplecov", "~> 0.22.0"
+  s.add_development_dependency "simplecov-cobertura"
   s.add_dependency "activemodel"
   s.add_dependency "i18n"
 end
