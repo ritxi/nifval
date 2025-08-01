@@ -25,6 +25,10 @@ jobs:
 
     - name: Run specs
       run: bundle exec rspec
+      
+    - name: Run specs with coverage (Ruby 3.3 only)
+      if: matrix.ruby-version == '3.3'
+      run: COVERAGE=true bundle exec rspec
 
     - name: Upload coverage to Codecov (Ruby 3.3 only)
       if: matrix.ruby-version == '3.3'
