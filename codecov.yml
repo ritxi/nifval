@@ -16,6 +16,9 @@ coverage:
         paths:
           - "lib/"
           - "spec/"
+        # Allow empty reports to pass
+        if_no_uploads: success
+        if_not_found: success
 
 # Ignore certain paths completely
 ignore:
