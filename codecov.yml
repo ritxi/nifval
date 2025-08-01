@@ -4,12 +4,28 @@ coverage:
       default:
         target: auto
         threshold: 1%
+        # Only check coverage on relevant file changes
+        paths:
+          - "lib/"
+          - "spec/"
     patch:
       default:
         target: auto
         threshold: 1%
+        # Only check patch coverage for code files
+        paths:
+          - "lib/"
+          - "spec/"
+
+# Ignore certain paths completely
+ignore:
+  - "*.md"
+  - "*.yml"
+  - "*.gemspec"
 
 comment:
   layout: "reach,diff,flags,tree"
   behavior: default
-  require_changes: false
+  require_changes: true  # Only comment when there are coverage changes
+  require_base: false
+  require_head: true
