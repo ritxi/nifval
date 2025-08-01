@@ -58,6 +58,16 @@ describe NifValidator do
     end
   end
 
+  context "when we test special CIF validation logic" do
+    let(:valid_nifs) { ["K1234567D", "L1234567D", "M1234567D" ] }
+    let(:invalid_nifs) { ["K1234567A", "L1234567Z", "M1234567X"] }
+    it "should exercise special valid CIF" do
+      valid_nifs.each { |nif| nif_validity nif, true }
+
+      invalid_nifs.each { |nif| nif_validity nif, false }
+    end
+  end
+
   # Good format
   context "when we check alternatively-formatted strings" do
     # Accept with length < 9
