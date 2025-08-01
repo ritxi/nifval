@@ -75,16 +75,16 @@ jobs:
         chmod +x codecov
 
     - name: Create commit in Codecov
-      run: ./codecov --auto-load-params-from Github --verbose create-commit
+      run: ./codecov --auto-load-params-from GithubActions --verbose create-commit
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
     - name: Create report in Codecov
-      run: ./codecov --auto-load-params-from Github --verbose create-report
+      run: ./codecov --auto-load-params-from GithubActions --verbose create-report
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
     - name: Upload empty report to Codecov
-      run: ./codecov --auto-load-params-from Github --verbose empty-upload
+      run: ./codecov --auto-load-params-from GithubActions --verbose empty-upload
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
