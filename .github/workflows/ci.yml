@@ -69,22 +69,22 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Create empty coverage report
+    - name: Install Codecov CLI
       run: |
-        mkdir -p coverage
-        echo '<?xml version="1.0" ?>
-        <coverage line-rate="1.0" lines-covered="0" lines-valid="0" timestamp="'$(date +%s)'" version="1.0">
-          <sources>
-            <source>.</source>
-          </sources>
-          <packages>
-          </packages>
-        </coverage>' > coverage/coverage.xml
+        curl -Os https://cli.codecov.io/latest/linux/codecov
+        chmod +x codecov
 
-    - name: Upload empty coverage to Codecov
-      uses: codecov/codecov-action@v4
-      with:
-        file: ./coverage/coverage.xml
-        token: ${{ secrets.CODECOV_TOKEN }}
-        fail_ci_if_error: false
-        verbose: true
+    - name: Create commit in Codecov
+      run: ./codecov --auto-load-params-from Github --verbose create-commit
+      env:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+    - name: Create report in Codecov
+      run: ./codecov --auto-load-params-from Github --verbose create-report
+      env:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+    - name: Upload empty report to Codecov
+      run: ./codecov --auto-load-params-from Github --verbose empty-upload
+      env:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
