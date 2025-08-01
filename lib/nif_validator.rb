@@ -88,7 +88,7 @@ class NifValidator < ActiveModel::EachValidator
         t2 = t[1].nil? ? 0 : integer_value(t[1])
         sum += t1+t2
       end
-      (10 - integer_value(sum.to_s.last))
+      (10 - integer_value(sum.to_s[-1]))
     end
     private :calculate_cif_algorithm_value
 
