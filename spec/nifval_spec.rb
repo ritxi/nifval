@@ -1,5 +1,7 @@
 require 'spec_helper'
 
+require 'models/nif'
+
 describe NifValidator do
   def nif_validity nif, ok
     test = Nif.new

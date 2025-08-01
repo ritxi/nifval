@@ -1,9 +1,4 @@
-# Configure Rails Environment
-ENV["RAILS_ENV"] = "test"
-
-require File.expand_path("../dummy/config/environment.rb",  __FILE__)
-
-Rails.backtrace_cleaner.remove_silencers!
+$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
 require 'nifval'
-require "rspec/rails"
+require 'rspec'
