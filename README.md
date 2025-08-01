@@ -73,12 +73,6 @@ boolean.
     nifval("00000000T") // returns true
     nifval("A2345678C") // returns false
 
-### Example ###
-
-You can see both situations via the test application included in this
-gem. This test app is also available at
-[http://nifvalapp.heroku.com](http://nifvalapp.heroku.com).
-
 Documentation
 -------------
 
