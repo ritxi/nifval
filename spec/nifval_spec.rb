@@ -3,10 +3,10 @@ require 'spec_helper'
 require 'models/nif'
 
 describe NifValidator do
-  def nif_validity nif, ok
+  def nif_validity nif, expected
     test = Nif.new
     test.testfield = nif
-    test.valid?.should == ok
+    expect(test.valid?).to eq(expected)
   end
 
   # Correct NIFs
