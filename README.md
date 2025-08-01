@@ -1,6 +1,9 @@
 NifVal
 ======
 
+[![CI](https://github.com/ritxi/nifval/actions/workflows/ci.yml/badge.svg)](https://github.com/ritxi/nifval/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/ritxi/nifval/graph/badge.svg)](https://codecov.io/gh/ritxi/nifval)
+
 Description
 -----------
 
