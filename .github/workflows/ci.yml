@@ -24,8 +24,9 @@ jobs:
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
 
     - name: Run specs
+      if: matrix.ruby-version != '3.3'
       run: bundle exec rspec
-      
+
     - name: Run specs with coverage (Ruby 3.3 only)
       if: matrix.ruby-version == '3.3'
       run: COVERAGE=true bundle exec rspec
